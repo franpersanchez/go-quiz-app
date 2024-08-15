@@ -78,8 +78,8 @@ go-quiz-app/
 ### Prerequisites
 Before you begin, ensure you have the following installed on your system:
 
-- Go: Ensure you have Go installed. You can download it from the official website.
-- Git: Ensure you have Git installed for cloning the repository. You can download it from the official website.
+- **Go**: Ensure you have Go installed. You can download it from the [official website](https://go.dev/dl/).
+- **Git**: Ensure you have Git installed for cloning the repository. You can download it from the official website.
 
 ### Installation
 Follow these steps to set up and run the project locally:
