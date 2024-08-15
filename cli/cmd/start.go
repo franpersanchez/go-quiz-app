@@ -42,8 +42,8 @@ var (
 )
 
 var startQuiz = &cobra.Command{
-	Use: "start",
-
+	Use:   "start",
+	Short: "It provides a list of questions and possible answers. You can only choose 1 correct answer.",
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := showQuestions(); err != nil {
 			fmt.Println("Error:", err)
@@ -53,8 +53,8 @@ var startQuiz = &cobra.Command{
 
 func init() {
 	startQuiz.Flags().IntVarP(&amount, "amount", "a", 10, "Number of questions to fetch")
-	startQuiz.Flags().StringVarP(&difficulty, "difficulty", "d", "easy", "Difficulty level (easy, medium, hard)")
 	startQuiz.Flags().IntVarP(&category, "category", "c", 9, "Category ID")
+	startQuiz.Flags().StringVarP(&difficulty, "difficulty", "d", "easy", "Difficulty level (easy, medium, hard)")
 }
 
 func showQuestions() error {
