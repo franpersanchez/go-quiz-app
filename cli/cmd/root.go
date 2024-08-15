@@ -21,7 +21,7 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(startQuiz)
-	//rootCmd.AddCommand(ranking)
+	rootCmd.AddCommand(ranking)
 }
 
 func Execute() {
