@@ -84,14 +84,14 @@ Before you begin, ensure you have the following installed on your system:
 ### Installation
 Follow these steps to set up and run the project locally:
 
-**1. Clone this Repository**:
+1. **Clone this Repository**:
 
     ```
     git clone https://github.com/franpersanchez/go-quiz-app
 
     cd go-quiz-app
     ```
-**2. Install Dependencies**:
+2. **Install Dependencies**:
 
     Navigate to the server directory and install the necessary dependencies:
 
@@ -111,7 +111,7 @@ Follow these steps to set up and run the project locally:
 The CLI client allows you to start the quiz and customize it by specifying the number of questions, category, and difficulty level. After completing the quiz, your results will be displayed along with a comparison to other participants.
 You can choose to play the Quiz (command **start**) or to consult the current submissions (command **ranking**)
 
-**1. Running the Backend Server**:
+1. **Running the Backend Server**:
 
      Navigate back to the server directory and start the backend server:
 
@@ -120,7 +120,7 @@ You can choose to play the Quiz (command **start**) or to consult the current su
      ```
      The server will start locally on port 8080 by default.
 
-**2. Using the CLI Client**:
+2. **Using the CLI Client**:
 
     Open a **new terminal**, navigate to the cli directory, and run the CLI client:
 
