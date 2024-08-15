@@ -35,8 +35,15 @@ var questions []Question
 var answers []Answer
 var rating Result
 
+var (
+	amount     int
+	difficulty string
+	category   int
+)
+
 var startQuiz = &cobra.Command{
 	Use: "start",
+
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := showQuestions(); err != nil {
 			fmt.Println("Error:", err)
@@ -44,8 +51,16 @@ var startQuiz = &cobra.Command{
 	},
 }
 
+func init() {
+	startQuiz.Flags().IntVarP(&amount, "amount", "a", 10, "Number of questions to fetch")
+	startQuiz.Flags().StringVarP(&difficulty, "difficulty", "d", "easy", "Difficulty level (easy, medium, hard)")
+	startQuiz.Flags().IntVarP(&category, "category", "c", 9, "Category ID")
+}
+
 func showQuestions() error {
-	resp, err := http.Get("http://localhost:8080/questions")
+	url := fmt.Sprintf("http://localhost:8080/questions?amount=%d&difficulty=%s&category=%d", amount, difficulty, category)
+	println(url)
+	resp, err := http.Get(url)
 	if err != nil {
 		return fmt.Errorf("error fetching questions: %w", err)
 	}
@@ -102,7 +117,7 @@ func showQuestions() error {
 		})
 	}
 
-	if len(answers) == 10 {
+	if len(answers) == amount {
 		secondTitleColor.Println("Quiz Completed! Here are your answers:")
 
 		for _, ans := range answers {

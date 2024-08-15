@@ -18,8 +18,8 @@ func NewQuizService(storage *storage.QuestionsStorage, submissionsStorage *stora
 		submissionsStorage: submissionsStorage}
 }
 
-func (s *QuizService) GetQuestions() []core.Question {
-	return s.questionsStorage.GetQuestions()
+func (s *QuizService) GetQuestions(amount *string, category *string, difficulty *string) []core.Question {
+	return s.questionsStorage.GetQuestions(amount, category, difficulty)
 }
 
 func (s *QuizService) CheckAnswers(answers []models.Answer) models.Result {

@@ -30,16 +30,14 @@ func InitializeStorage() (*QuestionsStorage, error) {
 	storage := &QuestionsStorage{
 		questions: []core.Question{},
 	}
-	if err := storage.fetchNewQuestions(); err != nil {
-		return nil, err
-	}
 	return storage, nil
 }
 
 // fetchNewQuestions fetches questions from Trivia API and stores them
-func (s *QuestionsStorage) fetchNewQuestions() error {
-	response, err := http.Get("https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple")
+func (s *QuestionsStorage) fetchNewQuestions(amount *string, category *string, difficulty *string) error {
 
+	apiURL := fmt.Sprintf("https://opentdb.com/api.php?amount=%s&category=%s&difficulty=%s&type=multiple", *amount, *category, *difficulty)
+	response, err := http.Get(apiURL)
 	if err != nil {
 		return fmt.Errorf("error fetching questions: %w", err)
 	}
@@ -74,6 +72,7 @@ func (s *QuestionsStorage) GetAnswerResult(questionId int) (string, bool) {
 	return "", false
 }
 
-func (s *QuestionsStorage) GetQuestions() []core.Question {
+func (s *QuestionsStorage) GetQuestions(amount *string, category *string, difficulty *string) []core.Question {
+	s.fetchNewQuestions(amount, category, difficulty)
 	return s.questions
 }

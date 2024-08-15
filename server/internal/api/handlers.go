@@ -9,7 +9,11 @@ import (
 
 func GetQuestions(svc *service.QuizService) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		questions := svc.GetQuestions()
+		query := r.URL.Query()
+		amount := query.Get("amount")
+		category := query.Get("category")
+		difficulty := query.Get("difficulty")
+		questions := svc.GetQuestions(&amount, &category, &difficulty)
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(questions)
 	}
