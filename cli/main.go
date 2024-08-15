@@ -1,8 +1,6 @@
 package main
 
-import (
-	"go-quiz-app/cli/cmd"
-)
+import "go-quiz-app/cli/cmd"
 
 func main() {
 	cmd.Execute()

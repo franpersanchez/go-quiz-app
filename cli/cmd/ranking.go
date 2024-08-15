@@ -11,7 +11,8 @@ import (
 )
 
 var ranking = &cobra.Command{
-	Use: "ranking",
+	Use:   "ranking",
+	Short: "It serves all current submissions.",
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := showSubmissions(); err != nil {
 			fmt.Println("Error:", err)
