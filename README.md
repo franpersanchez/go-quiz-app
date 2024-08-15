@@ -146,7 +146,8 @@ You can choose to play the Quiz (command **start**) or to consult the current su
      ```
     go run . start -a 20 -c 10 -d "medium"
     ```
-
+    
+![example](/quiz-app-example.png)
 
 ## Example Commands
 ### Quiz

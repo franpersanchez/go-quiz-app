@@ -59,7 +59,6 @@ func init() {
 
 func showQuestions() error {
 	url := fmt.Sprintf("http://localhost:8080/questions?amount=%d&difficulty=%s&category=%d", amount, difficulty, category)
-	println(url)
 	resp, err := http.Get(url)
 	if err != nil {
 		return fmt.Errorf("error fetching questions: %w", err)
