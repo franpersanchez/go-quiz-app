@@ -25,7 +25,7 @@ type TriviaResult struct {
 	IncorrectAnswers []string `json:"incorrect_answers"`
 }
 
-// InitializeStorage initializes the storage and fetches new questions
+// InitializeStorage initializes the storage
 func InitializeStorage() (*QuestionsStorage, error) {
 	storage := &QuestionsStorage{
 		questions: []core.Question{},

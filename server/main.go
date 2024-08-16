@@ -16,6 +16,7 @@ func main() {
 		log.Fatalf("Failed to initialize storage of Questions: %v", err)
 	}
 
+	//initialize in-memory storage
 	submissionsStorage := storage.InitializeSubmissionsStorage()
 
 	//initialize quiz Service
@@ -26,6 +27,6 @@ func main() {
 
 	log.Println("Backend server is starting on port: 8080")
 
-	//starts the server using the defined router
+	//starts the server using the defined router, in the port 8080
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
