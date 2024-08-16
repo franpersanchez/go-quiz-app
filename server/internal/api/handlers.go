@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+	"fmt"
 	"go-quiz-app/server/internal/service"
 	models "go-quiz-app/server/pkg"
 	"net/http"
@@ -13,7 +14,11 @@ func GetQuestions(svc *service.QuizService) http.HandlerFunc {
 		amount := query.Get("amount")
 		category := query.Get("category")
 		difficulty := query.Get("difficulty")
-		questions := svc.GetQuestions(&amount, &category, &difficulty)
+		questions, err := svc.GetQuestions(&amount, &category, &difficulty)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Error fetching questions from storage: %v", err), http.StatusInternalServerError)
+			return
+		}
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(questions)
 	}

@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	"go-quiz-app/server/internal/core"
 	"go-quiz-app/server/internal/storage"
 	models "go-quiz-app/server/pkg"
 )
@@ -18,7 +17,7 @@ func NewQuizService(storage *storage.QuestionsStorage, submissionsStorage *stora
 		submissionsStorage: submissionsStorage}
 }
 
-func (s *QuizService) GetQuestions(amount *string, category *string, difficulty *string) []core.Question {
+func (s *QuizService) GetQuestions(amount *string, category *string, difficulty *string) ([]models.Question, error) {
 	return s.questionsStorage.GetQuestions(amount, category, difficulty)
 }
 
